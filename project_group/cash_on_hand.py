@@ -19,7 +19,7 @@ previous_coh = float(cash_on_hand_list[0]["Cash On Hand"])
 fp_cwd = Path.cwd()/"project_group"/"test.txt"
 fp_cwd.touch()
 # writes cash defecits if any onto txt file
-with fp_cwd.open(mode="w", encoding = "UTF-8", newline ="") as file:
+with fp_cwd.open(mode="a", encoding = "UTF-8", newline ="") as file:
     for i in range(1, len(cash_on_hand_list)):
         current_day = cash_on_hand_list[i]["Day"]
         current_coh = float(cash_on_hand_list[i]["Cash On Hand"])
