@@ -13,15 +13,20 @@ with fp.open(mode="r", encoding="UTF-8", newline="") as file:
         empty_dict["Cash On Hand"] = coh
         cash_on_hand_list.append(empty_dict)
 
-fp_cwd = Path.cwd()/"project_group"/"test.csv"
+previous_day = cash_on_hand_list[0]["Day"]
+previous_coh = float(cash_on_hand_list[0]["Cash On Hand"])
+
+fp_cwd = Path.cwd()/"project_group"/"test.txt"
 fp_cwd.touch()
 
 with fp_cwd.open(mode="w", encoding = "UTF-8", newline ="") as file:
-    writer = csv.writer(file)
-    writer.writerow(["Day", "Cash On Hand"])
-    for item in cash_on_hand_list:
-        writer.writerow([item["Day"], item["Cash On Hand"]])
-
-
+    for i in range(1, len(cash_on_hand_list)):
+        current_day = cash_on_hand_list[i]["Day"]
+        current_coh = float(cash_on_hand_list[i]["Cash On Hand"])
+        if current_coh < previous_coh:
+            difference = previous_coh - current_coh
+            file.write(f"[CASH DEFICIT] DAY: {current_day} , AMOUNT: USD{difference}\n")
+        previous_day = current_day
+        previous_coh = current_coh
 
 
