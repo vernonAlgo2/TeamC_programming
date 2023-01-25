@@ -16,7 +16,7 @@ with fp.open(mode="r", encoding="UTF-8", newline="") as file:
 highest_category = overhead_list[0]["Category"]
 highest_percentage = float(overhead_list[0]["Overheads"])
 fp_cwd = Path.cwd()/"project_group"/"test.txt"
-fp.touch()
+fp_cwd.touch()
 with fp_cwd.open(mode="w", encoding = "UTF-8", newline ="") as file:
     file.write(f"[HIGHEST OVERHEADS]{highest_category.upper()}: {highest_percentage}%\n")
 
