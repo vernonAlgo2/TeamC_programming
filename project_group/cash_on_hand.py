@@ -1,6 +1,6 @@
 from pathlib import Path
 import csv
-fp = Path.cwd()/"csv_reports"/"cash_on_hand.csv"
+fp = Path.cwd()/"project_group"/"csv_reports"/"cash_on_hand.csv"
 
 cash_on_hand_list = []
 # reads the csv file containing cash on hand from day 40 to 50
@@ -28,5 +28,4 @@ with fp_cwd.open(mode="a", encoding = "UTF-8", newline ="") as file:
             file.write(f"[CASH DEFICIT] DAY: {current_day} , AMOUNT: USD{difference}\n")
         previous_day = current_day
         previous_coh = current_coh
-
 

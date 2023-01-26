@@ -1,6 +1,6 @@
 from pathlib import Path
 import csv
-fp = Path.cwd()/"csv_reports"/"MAB CSV"/"profit-and-loss-usd.csv"
+fp = Path.cwd()/"project_group"/"csv_reports"/"MAB CSV"/"profit-and-loss-usd.csv"
 
 pnl_list = []
 with fp.open(mode="r", encoding="UTF-8", newline="") as file:
