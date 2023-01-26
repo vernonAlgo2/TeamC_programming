@@ -28,5 +28,3 @@ with fp_cwd.open(mode="w", encoding = "UTF-8", newline ="") as file:
     file.write(f"[HIGHEST OVERHEADS]{highest_category.upper()}: {highest_percentage}%\n")
 
 
-#sort the data into descending and take the percentage at index 0
-
