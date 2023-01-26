@@ -1,9 +1,12 @@
 # Overheads
 from pathlib import Path
 import csv
+# create a file to csv file
 fp = Path.cwd()/"project_group"/"csv_reports"/"MAB CSV"/"45-overheads.csv"
 
+# create an empty dictionary to store overhead 
 overhead_list = [] 
+# reads the csv file to append overhead the csv
 with fp.open(mode="r", encoding="UTF-8", newline="") as file:
     reader = csv.reader(file)
     next(reader)
@@ -11,9 +14,10 @@ with fp.open(mode="r", encoding="UTF-8", newline="") as file:
         empty_dict = dict()
         empty_dict["Category"] = expense
         empty_dict["Overheads"] = percentage
+        # append overhead as a dictionary back into the empty overhead_list dictionary 
         overhead_list.append(empty_dict)
 
-
+# keeps track of the highest overhead
 highest_category = overhead_list[0]["Category"]
 highest_percentage = float(overhead_list[0]["Overheads"])
 
