@@ -1,6 +1,7 @@
 from pathlib import Path
 import csv
-fp = Path.cwd()/"project_group"/"csv_reports"/"MAB CSV"/"profit-and-loss-usd.csv"
+fp = Path.cwd()/"csv_reports"/"MAB CSV"/"profit-and-loss-usd.csv"
+
 pnl_list = []
 with fp.open(mode="r", encoding="UTF-8", newline="") as file:
     reader = csv.reader(file)
@@ -17,7 +18,7 @@ with fp.open(mode="r", encoding="UTF-8", newline="") as file:
 previous_day = pnl_list[0]["Day"]
 previous_profit = float(pnl_list[0]["Net Profit"])
 
-fp_cwd = Path.cwd()/"project_group"/"summary_report.txt"
+fp_cwd = Path.cwd()/"summary_report.txt"
 fp_cwd.touch()
 # writes cash defecits if any onto txt file
 with fp_cwd.open(mode="a", encoding = "UTF-8", newline ="") as file:
