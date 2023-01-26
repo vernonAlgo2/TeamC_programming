@@ -1,3 +1,4 @@
+# Overheads
 from pathlib import Path
 import csv
 fp = Path.cwd()/"csv_reports"/"MAB CSV"/"45-overheads.csv"
@@ -14,7 +15,13 @@ with fp.open(mode="r", encoding="UTF-8", newline="") as file:
 
 highest_category = overhead_list[0]["Category"]
 highest_percentage = float(overhead_list[0]["Overheads"])
-fp_cwd = Path.cwd()/"testing.txt"
+
+for expense in overhead_list:
+    if float(expense["Overheads"]) > highest_percentage:
+        highest_category = expense["Category"]
+        highest_percentage = float(expense["Overheads"])
+
+fp_cwd = Path.cwd()/"summary_report.txt"
 fp_cwd.touch()
 with fp_cwd.open(mode="w", encoding = "UTF-8", newline ="") as file:
     file.write(f"[HIGHEST OVERHEADS]{highest_category.upper()}: {highest_percentage}%\n")
