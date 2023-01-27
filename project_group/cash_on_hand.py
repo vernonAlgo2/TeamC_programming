@@ -3,7 +3,7 @@ import csv
 # create a file to csv file
 fp = Path.cwd()/"project_group"/"csv_reports"/"cash_on_hand.csv"
 
-# create an empty dictionary to store cash on hand by day 
+# create an empty list to store cash on hand by day 
 cash_on_hand_list = []
 
 # reads the csv file to append cash on hand from the csv

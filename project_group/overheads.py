@@ -1,10 +1,9 @@
-# Overheads
 from pathlib import Path
 import csv
 # create a file to csv file
 fp = Path.cwd()/"project_group"/"csv_reports"/"MAB CSV"/"45-overheads.csv"
 
-# create an empty dictionary to store overhead 
+# create an empty list to store overhead 
 overhead_list = [] 
 # reads the csv file to append overhead the csv
 with fp.open(mode="r", encoding="UTF-8", newline="") as file:

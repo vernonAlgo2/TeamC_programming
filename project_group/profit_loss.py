@@ -2,6 +2,7 @@ from pathlib import Path
 import csv
 fp = Path.cwd()/"project_group"/"csv_reports"/"MAB CSV"/"profit-and-loss-usd.csv"
 
+# create an empty list to store profit and loss by day
 pnl_list = []
 with fp.open(mode="r", encoding="UTF-8", newline="") as file:
     reader = csv.reader(file)
@@ -35,4 +36,3 @@ with fp_cwd.open(mode="a", encoding = "UTF-8", newline ="") as file:
         # store current values to "previous_day" and "previous_coh" to be used as new reference point for next iteration
         previous_day = current_day
         previous_profit = current_profit
-        
