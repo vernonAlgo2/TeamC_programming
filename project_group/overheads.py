@@ -5,28 +5,25 @@ fp = Path.cwd()/"project_group"/"csv_reports"/"MAB CSV"/"45-overheads.csv"
 
 # create an empty list to store overhead 
 overhead_list = [] 
-# reads the csv file to append overhead the csv
 with fp.open(mode="r", encoding="UTF-8", newline="") as file:
     reader = csv.reader(file)
     next(reader)
     for expense, percentage in reader:
-        empty_dict = dict()
-        empty_dict["Category"] = expense
-        empty_dict["Overheads"] = percentage
-        # append overhead as a dictionary back into the empty overhead_list dictionary 
-        overhead_list.append(empty_dict)
+        # append the data directly to the overhead_list as a list
+        overhead_list.append([expense, percentage])
+
 
 # Assign the first category and percentage from the list as the initial highest
 # Set as a reference point for the next elements in the list
-highest_category = overhead_list[0]["Category"]
-highest_percentage = float(overhead_list[0]["Overheads"])
+highest_category = overhead_list[0][0]
+highest_percentage = float(overhead_list[0][1])
 
 for expense in overhead_list:
     # Check if the current expense's percentage is greater than the current highest percentage
-    if float(expense["Overheads"]) > highest_percentage:
+    if float(expense[1]) > highest_percentage:
         # Update the highest category and highest percentage if the current expense's category and percentage is greater than the previous high
-        highest_category = expense["Category"]
-        highest_percentage = float(expense["Overheads"])
+        highest_category = expense[0]
+        highest_percentage = float(expense[1])
 
 # create the summary_report text file
 fp_cwd = Path.cwd()/"summary_report.txt"
