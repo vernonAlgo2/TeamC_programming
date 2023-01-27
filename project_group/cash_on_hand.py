@@ -26,9 +26,9 @@ fp_cwd = Path.cwd()/"summary_report.txt"
 fp_cwd.touch()
 # opens the file to write the output
 with fp_cwd.open(mode="a", encoding = "UTF-8", newline ="") as file:
-    for i in range(1, len(cash_on_hand_list)):
-        current_day = cash_on_hand_list[i]["Day"]
-        current_coh = float(cash_on_hand_list[i]["Cash On Hand"])
+    for index in range(1, len(cash_on_hand_list)):
+        current_day = cash_on_hand_list[index]["Day"]
+        current_coh = float(cash_on_hand_list[index]["Cash On Hand"])
         if current_coh < previous_coh:
             difference = previous_coh - current_coh
             file.write(f"[CASH DEFICIT] DAY: {current_day} , AMOUNT: USD{difference}\n")
