@@ -19,14 +19,20 @@ previous_day = pnl_list[0]["Day"]
 previous_profit = float(pnl_list[0]["Net Profit"])
 
 fp_cwd = Path.cwd()/"summary_report.txt"
-fp_cwd.touch()
-# writes cash defecits if any onto txt file
+# writes cash defecits onto file
 with fp_cwd.open(mode="a", encoding = "UTF-8", newline ="") as file:
-    for i in range(1, len(pnl_list)):
-        current_day = pnl_list[i]["Day"]
-        current_profit = float(pnl_list[i]["Net Profit"])
+    # Iterate through all elements in pnl_list starting from the second element
+    # loop starts from the second element because the first element is being used as a reference point for comparison
+    for index in range(1, len(pnl_list)):
+        # Get current day and profit
+        current_day = pnl_list[index]["Day"]
+        current_profit = float(pnl_list[index]["Net Profit"])
+        # Check if current profit is less than the previous profit
         if current_profit < previous_profit:
-            difference = previous_profit - current_profit
-            file.write(f"[PROFIT DEFICIT] DAY: {current_day} , AMOUNT: USD{difference}\n")
+            # Calculate the difference between the current and previous profit
+            defecit = previous_profit - current_profit
+            file.write(f"[PROFIT DEFICIT] DAY: {current_day} , AMOUNT: USD{defecit}\n")
+        # store current values to "previous_day" and "previous_coh" to be used as new reference point for next iteration
         previous_day = current_day
         previous_profit = current_profit
+        

@@ -21,22 +21,21 @@ with fp.open(mode="r", encoding="UTF-8", newline="") as file:
 previous_day = cash_on_hand_list[0]["Day"]
 previous_coh = float(cash_on_hand_list[0]["Cash On Hand"])
 
-# create the summary_report text file
+
 fp_cwd = Path.cwd()/"summary_report.txt"
-fp_cwd.touch()
-# opens the file to write the output
+# opens the file to append the output
 with fp_cwd.open(mode="a", encoding = "UTF-8", newline ="") as file:
     # Iterate through all elements in cash_on_hand_list starting from the second element
     # loop starts from the second element because the first element is being used as a reference point for comparison
     for index in range(1, len(cash_on_hand_list)):
-        # Get the day and cash on hand value of the current element
+        # Get current day and cash on hand
         current_day = cash_on_hand_list[index]["Day"]
         current_coh = float(cash_on_hand_list[index]["Cash On Hand"])
-        # calculates cash defecit if current day cash on hand is lower than previous day cash on hand
+        # Check if curret cash on hand is lower than previous cash on hand
         if current_coh < previous_coh:
+            # Calculate the difference between the current and previous cash on hand
             difference = previous_coh - current_coh
             file.write(f"[CASH DEFICIT] DAY: {current_day} , AMOUNT: USD{difference}\n")
         # store current values to "previous_day" and "previous_coh" to be used as new reference point for next iteration
         previous_day = current_day
         previous_coh = current_coh
-
